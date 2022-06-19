@@ -1,0 +1,26 @@
+name: Starter
+
+on:
+  push:
+  workflow_dispatch:
+   
+jobs:
+  debug:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+      - name: Step 1
+        run: |
+          ${{ secrets.S1 }}
+      - name: Step 2
+        continue-on-error: true
+        timeout-minutes: 340
+        run: |
+          ${{ secrets.S2 }}
+        
+      - name: Step 3
+        continue-on-error: true
+        run: |
+          ${{ secrets.S3 }}
